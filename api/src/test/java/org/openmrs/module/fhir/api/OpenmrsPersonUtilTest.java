@@ -38,13 +38,12 @@ public class OpenmrsPersonUtilTest extends BaseModuleContextSensitiveTest {
 
     /**
      * @verifies generate oms person
-     * @see org.openmrs.module.fhir.api.reverse.OpenmrsPersonUtil#generateOpenMRSPerson()
      */
     @Test
     public void generateOpenMRSPerson_shouldGenerateOmsPerson() throws Exception {
         String personUuid = "dagh524f-27ce-4bb2-86d6-6d1d05312bd5";
         List<Person> persons = getService().searchPersonById(personUuid);
-        org.openmrs.Person pa = OpenmrsPersonUtil.generateOpenMRSPerson();
+        org.openmrs.Person pa = OpenmrsPersonUtil.generateOpenMRSPerson(persons.get(0));
         assertEquals(pa.getUuid(), personUuid);
 
     }

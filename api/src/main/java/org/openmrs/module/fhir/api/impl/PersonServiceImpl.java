@@ -69,8 +69,8 @@ public class PersonServiceImpl implements PersonService{
 	}
 
     @Override
-    public org.openmrs.Person consumeFHIRPerson(Person person) {
+    public org.openmrs.Person createFHIRPerson(Person person) {
 
-        return OpenmrsPersonUtil.generateOpenMRSPerson();
+        return OpenmrsPersonUtil.generateOpenMRSPerson(person);
     }
 }

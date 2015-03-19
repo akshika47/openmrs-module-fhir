@@ -46,6 +46,6 @@ public interface PersonService {
      * @param person
      * @return
      */
-    org.openmrs.Person consumeFHIRPerson(Person person);
+    org.openmrs.Person createFHIRPerson(Person person);
 
 }

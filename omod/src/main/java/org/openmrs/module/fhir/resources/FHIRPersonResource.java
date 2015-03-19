@@ -41,6 +41,6 @@ public class FHIRPersonResource extends Resource {
     public org.openmrs.Person consumeFHIRPerson(Person person)
     {
         PersonService personService = Context.getService(PersonService.class);
-        return personService.consumeFHIRPerson(person);
+        return personService.createFHIRPerson(person);
     }
 }

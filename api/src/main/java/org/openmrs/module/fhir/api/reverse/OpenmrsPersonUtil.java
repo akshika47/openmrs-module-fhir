@@ -32,10 +32,10 @@ public class OpenmrsPersonUtil {
 
     /**
      *
-     * @return Person
-     * @should generate oms person
+     * @param personFHIR
+     * @return OpenMRS Person
      */
-         public static Person generateOpenMRSPerson() {
+     public static Person generateOpenMRSPerson(ca.uhn.fhir.model.dstu2.resource.Person personFHIR) {
 
              Person omrsPerson = new Person();
              IdDt uuid = new IdDt();
