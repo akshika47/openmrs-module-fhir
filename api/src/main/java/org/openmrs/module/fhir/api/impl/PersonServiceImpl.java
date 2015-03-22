@@ -14,17 +14,15 @@
 package org.openmrs.module.fhir.api.impl;
 
 import ca.uhn.fhir.model.dstu2.resource.Person;
-
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.openmrs.api.context.Context;
 import org.openmrs.module.fhir.api.PersonService;
 import org.openmrs.module.fhir.api.db.FHIRDAO;
+import org.openmrs.module.fhir.api.util.OMRSPersonUtil;
 import org.openmrs.module.fhir.api.util.FHIRPersonUtil;
-
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;;
 
 public class PersonServiceImpl implements PersonService{
 
@@ -64,25 +62,14 @@ public class PersonServiceImpl implements PersonService{
 		}
 		return personList;
 	}
-	
-	@Override
-	public List<Person> searchPersons(String name, Integer birthYear, String gender) {
-		Set<org.openmrs.Person> persons = Context.getPersonService().getSimilarPeople(name, birthYear, gender);
-		List<Person> fhirPersonsList = new ArrayList<Person>();
-		for (org.openmrs.Person person : persons) {
-			fhirPersonsList.add(FHIRPersonUtil.generatePerson(person));
-		}
-		return fhirPersonsList;
-	}
 
 	@Override
-	public List<Person> searchPersonsByName(String name) {
-		List<org.openmrs.Person> persons = Context.getPersonService().getPeople(name, null);
-		List<Person> fhirPersonsList = new ArrayList<Person>();
-		for (org.openmrs.Person person : persons) {
-			fhirPersonsList.add(FHIRPersonUtil.generatePerson(person));
-		}
-		return fhirPersonsList;
+	public List<Person> searchPersonByName(String name) {
+		return null;
 	}
-	
+
+    @Override
+    public org.openmrs.Person createFHIRPerson(Person person) {
+        return OMRSPersonUtil.generateOpenMRSPerson(person);
+    }
 }

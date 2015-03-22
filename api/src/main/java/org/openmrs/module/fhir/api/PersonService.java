@@ -14,7 +14,6 @@
 package org.openmrs.module.fhir.api;
 
 import ca.uhn.fhir.model.dstu2.resource.Person;
-
 import java.util.List;
 
 public interface PersonService {
@@ -33,23 +32,20 @@ public interface PersonService {
 	 * @return fhir patient resource list
 	 */
 	List<Person> searchPersonById(String id);
-	
+
 	/**
-	 * Search all persons for given attributes
-	 *
-	 * @param name Name of person to search
-	 * @param birthYear The year of birth to restrict
-	 * @param gender The gender field to search on (Typically just "M" or "F")
-	 * @return persons list
-	 */
-	List<Person> searchPersons(String name, Integer birthYear, String gender);
-	
-	/**
-	 * Search persons by name
+	 * Search person by name
 	 *
 	 * @param name the name to be search
-	 * @return fhir persons resource list
+	 * @return fhir person resource list
 	 */
-	List<Person> searchPersonsByName(String name);
-	
+	List<Person> searchPersonByName(String name);
+
+    /**
+     * creates a oms Person from FHIR personn
+     * @param person
+     * @return
+     */
+    org.openmrs.Person createFHIRPerson(Person person);
+
 }
